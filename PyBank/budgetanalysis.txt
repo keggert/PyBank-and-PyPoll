@@ -1,0 +1,7 @@
+financial analysis
+-------------------------------
+Total Month: 86
+Total Profit: 38382578
+Average ChangeAdd Variable
+Greatest Increase in ProfitsAdd Variable
+Greatest Decrease in ProfitsAdd Variable
