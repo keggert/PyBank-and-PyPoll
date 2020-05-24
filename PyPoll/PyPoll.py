@@ -21,6 +21,12 @@ with open(PyPollcsv, 'r') as csvfile:
     CandidateList = []
     CVotes = []
     VotePercent = []
+    Khan = []
+    Correy = []
+    Li = []
+    OTooley = []
+    Candidates = []
+
 
     # Reading header row
     header = next(csvreader)
@@ -46,20 +52,25 @@ with open(PyPollcsv, 'r') as csvfile:
         VotePercent.append(round(CVotes.count(candidate)/TotalVotes*100,3))
 
     winner = Unique[CandidateCount.index(max(CandidateCount))]
-    
 
-output = (
-    "Election Results\n"
-    "--------------------------------\n"
-    "Total Votes: " + str(TotalVotes) + "\n"
-    "--------------------------------\n"
-    for i in range(len(unique)):
-        "f{unique[i]}: {percent[i]}% {CandidateCount[i]}\n"
-    "---------------------------------\n"
-    "Winner: Khan"
-    "---------------------------------\n"
-)
+print("Election Results")
+print("--------------------------")
+print(f"Total Results: {TotalVotes}")
+for i in range(len(Unique)):
+    print(f"{Unique[i]}: {VotePercent[i]}% ({CandidateCount[i]})")
+print("---------------------------")
+print(f"Winner: {winner}")
+print("---------------------------")
 
-# export results to output file
-with open(output_file, "w") as textfile: 
-    textfile.write(output)
+
+poll_output_file = os.path.join("pollinganalysis.txt")
+with open (poll_output_file, 'w') as txtfile:
+
+    txtfile.write("Election Results\n")
+    txtfile.write("--------------------------\n")
+    txtfile.write(f"Total Results: {TotalVotes}\n")
+    for i in range(len(Unique)):
+        txtfile.write(f"{Unique[i]}: {VotePercent[i]}% ({CVotes[i]})\n")
+    txtfile.write("---------------------------\n")
+    txtfile.write(f"Winner: {winner}\n")
+    txtfile.write("---------------------------\n")
